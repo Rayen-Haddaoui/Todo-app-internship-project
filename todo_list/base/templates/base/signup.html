@@ -1,0 +1,39 @@
+{% extends 'base/main.html' %}
+{% block content %}
+{% load static %}
+<div class="header-bar">
+    <h1>Sign up</h1>
+</div>
+<div class="card-body">
+    <form  method="post">
+        {% csrf_token %}
+        <label >{{form.username.label}}</label>
+        {{form.username}}
+        <label >{{form.email.label}}</label>
+        {{form.email}}
+        <label >{{form.password1.label}}</label>
+        {{form.password1}}
+        <div class="tooltip">
+            <span class="tooltiptext">Your password can't be too similair to your other personal information.<br>
+                Your password  must contain at least 8 characters.<br> 
+                Your password can't be a commonly used password.<br>
+                Your password can't be entirely numeric.</span>
+            <span><img src="{% static 'images/tooltip.png' %}" class="tooltipimg"></span>
+        </div>
+        <label >{{form.password2.label}}</label>
+        {{form.password2}}
+        <br><input style="margin-top: 10px;" class="button" type="submit" value="Singup">
+    </form>
+    {% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <p class="alertMsg"> {{ error }} </p>
+        {% endfor %}
+    {% endfor %}
+    {% endif %}
+    <div class="side-image"><img  src="{% static 'images/illus1.png' %}" ></div>
+    <p>Already have an account? <a href="{% url 'login' %}" class="url">Login</a></p>
+</div>
+
+
+{% endblock content %}

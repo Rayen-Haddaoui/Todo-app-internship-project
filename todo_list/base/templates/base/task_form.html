@@ -1,0 +1,21 @@
+{% extends 'base/main.html' %}
+{% block content %}
+{% load static %}
+
+<div class="header-bar">
+    <a href="{% url 'tasks' %}"><img  src="{% static 'images/GoBack.png' %}" ></a>
+</div>
+
+<div class="card-body">
+    <form method="post" >
+        {% csrf_token %}
+        {{form.as_p}}
+        
+        <input class="button" type="submit" value="submit">
+    
+    </form>
+</div>
+
+
+
+{% endblock content %}

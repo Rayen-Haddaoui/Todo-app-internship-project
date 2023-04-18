@@ -1,0 +1,21 @@
+{% extends 'base/main.html' %}
+{% block content %}
+{% load static %}
+<div class="header-bar">
+    <h1>Login</h1>
+</div>
+
+<div class="card-body">
+    
+<form  method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input class="button" type="submit" value="Login">
+</form>
+<p>Don't have an account? <a href="{% url 'signup' %}" class="url"> Create account</a></p>
+<p>Forgot password? <a href="{% url 'reset_password' %}" class="url"> Reset password</a></p>
+
+<div class="side-image"><img  src="{% static 'images/illus1.png' %}" ></div>
+</div>
+
+{% endblock content %}
